@@ -12,12 +12,23 @@ function() values() {
 	});
 }
 */
+
+/*
 $(function() {
     $("#playlist li").on("click", function() {
         $("#videoarea").attr({
             src: $("#playlist li").attr("movieurl"),
             poster: $("#playlist li").attr("moviesposter"),
             muted: "muted"
+        })
+    })
+})
+*/
+$(function() {
+    $("#playlist li").on("click", function() {
+        $("#videoarea").attr({
+            "src": $(this).attr("movieurl"),
+            "poster": $(this).attr("moviesposter")
         })
     })
     $("#videoarea").attr({
