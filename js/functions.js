@@ -20,4 +20,8 @@ $(function() {
             muted: "muted"
         })
     })
+    $("#videoarea").attr({
+        "src": $("#playlist li").eq(0).attr("movieurl"),
+        "poster": $("#playlist li").eq(0).attr("moviesposter")
+    })
 })
