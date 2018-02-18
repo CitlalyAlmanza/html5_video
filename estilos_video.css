@@ -82,14 +82,14 @@
 	}
 	article{		
 		width: 55%;
-		background-color: #cc6699;
+		background-color: white;
 		float: left;
 		height: 26em;
 	}
 	aside{
 		float: right;
 		width: 40%;
-		background-color: #cc6699;
+		/*background-color: #cc6699;*/
 		height: 26em;
 	}
 	footer{

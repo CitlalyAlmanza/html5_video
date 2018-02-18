@@ -8,7 +8,9 @@
     <meta name="Author" content="GM-CA" />
     <meta name="Description" content="Sample for HTML5" />
 	<link rel="stylesheet" type="text/css" href="estilos_video.css">
-
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/functions.js"></script>
 </head>
 <body>
 <div id="Contenedor">
@@ -16,6 +18,7 @@
 	<header>
 		<br>
 		<img src="./Imagenes/logoColor.png" width="100" height="100">
+
 		
 	</header>
 	<nav>
@@ -31,9 +34,16 @@
 </div>
 	<main>
 	<br>
-		<article>VIDEO </article>
+		<article>
+			<video id="videoarea" controls="controls" poster="" src="" mute width="450" height="300"></video>
+		</article>
 		<aside>
-			Lista de cosas del video
+			<ul id="playlist">
+			    <li movieurl="http://html5videoformatconverter.com/data/images/happyfit2.mp4" moviesposter="http://html5videoformatconverter.com/data/images/screen.jpg">Happy Fit</li><br>
+			    <li movieurl="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4">Sintel</li><br>          
+			    <li movieurl="http://html5example.net/static/video/html5_Video_VP8.webm">Resident Evil</li><br> 
+			    <li movieurl="http://www.ioncannon.net/examples/vp8-webm/big_buck_bunny_480p.webm">Big Buck Bunny</li> <br>
+			</ul>
 		</aside>
 	</main>
 	<footer>
