@@ -1,7 +1,7 @@
 	* {
 		padding: 0px;
 		margin:0px;
-		background-color: #767;
+		background-color: white;
 		font-family: Arial, Helvetica, sans-serif;
 	}
 	#Contenedor{
@@ -75,27 +75,30 @@
 	/******************/
 	main{
 		clear:left;
-		background-color: #767;
+		background-color: white;
 		width: 80%;
 		height: 26em;
 		margin:auto;
 	}
 	article{		
 		width: 55%;
-		background-color: #767;
+		background-color: white;
 		float: left;
 		height: 26em;
 	}
 	aside{
 		float: right;
 		width: 40%;
-		background-color: #767;
+		background-color: white;
 		height: 26em;
+		overflow:scroll;
 	}
 	footer{
+		font-size: 0.8em;
+		color: white;
 		clear: left;
 		width: 80%;
-		height: 5em;
+		height: 4em;
 		background-color: #405;
 		margin: auto;
 	}
@@ -110,7 +113,7 @@
 	}
 
 	#playlist li:hover{
-	    color:blue;                        
+	    color: white	;                        
 	}
 	#videoarea {
 	    float:left;
