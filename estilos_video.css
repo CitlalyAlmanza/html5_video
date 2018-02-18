@@ -75,21 +75,21 @@
 	/******************/
 	main{
 		clear:left;
-		/*background-color: #998899;*/
+		background-color: #767;
 		width: 80%;
 		height: 26em;
 		margin:auto;
 	}
 	article{		
 		width: 55%;
-		background-color: white;
+		background-color: #767;
 		float: left;
 		height: 26em;
 	}
 	aside{
 		float: right;
 		width: 40%;
-		/*background-color: #cc6699;*/
+		background-color: #767;
 		height: 26em;
 	}
 	footer{
@@ -98,6 +98,25 @@
 		height: 5em;
 		background-color: #405;
 		margin: auto;
+	}
+
+	#playlist {
+    display:table;
+	}
+
+	#playlist li{
+	    cursor:pointer;
+	    padding:8px;
+	}
+
+	#playlist li:hover{
+	    color:blue;                        
+	}
+	#videoarea {
+	    float:left;
+	    width: 450px;
+	    height:400px;
+	    margin:10px;    
 	}
 
 	
