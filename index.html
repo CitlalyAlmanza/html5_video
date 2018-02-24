@@ -11,6 +11,63 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
 	<script src="js/jquery-1.8.3.js"></script>
 	<script src="js/functions.js"></script>
+	<script>
+		function arrastrando(ev){
+			ev.dataTransfer.setData("Date", ev.target.id);
+            ev.dropEffect = "move";
+            
+		}
+		function sobre(ev){
+			 ev.preventDefault();
+            ev.dataTransfer.dropEffect = "link" //move copy
+        }
+
+		function soltar(ev){
+			ev.preventDefault();
+			var elementoArrastrado = ev.dataTransfer.getData("Date"); // Elemento arrastrado
+   			 ev.target.appendChild(document.getElementById(elementoArrastrado)); // Añade el elemento arrastrado al elemento desde el que se llama a esta funcion
+		}
+		function soltar2(ev){
+			ev.preventDefault();
+			//alert(ev.target.localName);
+			//alert(ev.target.id)
+			//alert(ev.target.namespaceURI);
+			//alert(ev.target.title);
+
+
+
+			var videlem = document.createElement("video");
+			videlem.src = "video4.mp4";
+			videlem.controls="true";
+			videlem.id="video2";
+			//videlem.draggable="True";
+			videlem.ondragstart=arrastrando(event);
+			videlem.width="200";
+			videlem.height="200";
+			videlem.autoplay="true";		
+			//videlem.appendChild(sourceMP4);
+			document.getElementById("droparea").appendChild(videlem);
+			/*<video id="video" src="Teacher.mp4" draggable="true" ondragstart="arrastrando(event);" controls  width="200" height="200"></video>*/
+		}
+
+	/*
+        function dragstart_handler(ev) {
+            // Add the target element's id to the data transfer object
+            ev.dataTransfer.setData("text/plain", ev.target.id);
+            ev.dropEffect = "move";
+        }
+        function dragover_handler(ev) {
+            ev.preventDefault();
+            ev.dataTransfer.dropEffect = "move" //move copy
+        }
+        function drop_handler(ev) {
+            ev.preventDefault();
+            // Get the id of the target and add the moved element to the target's DOM
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }*/
+    </script>
+
 </head>
 <body>
 <div id="Contenedor">
@@ -21,6 +78,7 @@
 
 		
 	</header>
+
 
 	<nav>
 		<div class="titulo">Play Video</div>
@@ -34,12 +92,12 @@
 <br>
 	<main>
 	<br>
-		<article>
+		<article id="droparea" ondrop="soltar2(event);" ondragover="sobre(event);">
 			<video id="videoarea" controls="controls" poster="" src="" mute width="450" height="300"></video>
 		</article>
 		<aside>
 			<ul id="playlist">
-			    <li movieurl="videos/paris.webm" moviesposter="https://www.rumbo.es/hoteles/img/francia/paris.jpg">
+			    <li movieurl="Teacher.mp4" moviesposter="https://www.rumbo.es/hoteles/img/francia/paris.jpg">
 				    <img width="140" height="80" src="https://www.rumbo.es/hoteles/img/francia/paris.jpg"> </img>
 					Timelapse Paris</li><br>
 

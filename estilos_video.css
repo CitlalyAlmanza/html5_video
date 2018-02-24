@@ -85,6 +85,7 @@
 		background-color: white;
 		float: left;
 		height: 26em;
+		overflow:scroll;
 	}
 	aside{
 		float: right;
