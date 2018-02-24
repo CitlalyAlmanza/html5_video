@@ -25,14 +25,15 @@ $(function() {
 })
 */
 $(function() {
-    $("#playlist li").on("click", function() {
+    $("li video").on("click", function() {
         $("#videoarea").attr({
-            "src": $(this).attr("movieurl"),
-            "poster": $(this).attr("moviesposter")
+            "src": $(this).attr("src"),
+            "poster": $(this).attr("poster")
         })
     })
+    
     $("#videoarea").attr({
-        "src": $("#playlist li").eq(0).attr("movieurl"),
-        "poster": $("#playlist li").eq(0).attr("moviesposter")
+        "src": $("li video").eq(0).attr("src"),
+        "poster": $("li video").eq(0).attr("poster")
     })
 })
