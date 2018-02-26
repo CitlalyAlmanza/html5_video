@@ -17,6 +17,7 @@
 		background-color: #405;
 		font-family: Arial, Helvetica, sans-serif;
 		color: white;
+		width: 50%;
 	}
 
 	header{
@@ -39,8 +40,8 @@
 		margin: auto;			
 		background-color: #405;
 		width: 100%;
-		height: 5.5em;
-		padding-top: 2em;
+		height: 7em;
+		
 		
 	}
 	ul,ol{
@@ -123,9 +124,14 @@
 	    margin:10px;    
 	}
 
-	#login{
-		margin-left: 8em;
+	#formulario{
+		margin-left: 2em;
 		float: left;
-		height: 5em;
+		
 		width: 9em;
+		background-color: #405;
+	}
+	#login_form, #inicio, #title, #boton, #reg{
+		background-color: #405;
+		color: white;
 	}

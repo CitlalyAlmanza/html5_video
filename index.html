@@ -70,8 +70,151 @@
 				videlem.height="150";	
 				li_elem.appendChild(videlem);
 				document.getElementById("playlist").appendChild(li_elem);
+				
+
 			}
+			//*******************************************************************************
+				//********************FUNCIONES PARA LOGIN ***********************************
+			function login(){
+			var usr = document.getElementById("inputUsuario").value;			
+               if(localStorage.getItem(usr) === null){
+               		//elminar elementos
+               		document.getElementById("inicio").innerText =""
+               	   eliminarElemento("btn_ing");
+               	   eliminarElemento("btn_reg");
+
+                   eliminarElemento("inputUsuario");
+                  // localStorage.setItem(usr, pass);
+                   document.getElementById("title").innerText = "Usuario no existe";
+                   //crear boton de reintentar
+                   var bton= document.createElement("button");
+                   bton.id="reintentar";
+                   bton.innerText="Reintentar";
+                   document.getElementById("boton").appendChild(bton);
+                   if (bton.addEventListener){			    
+				        bton.addEventListener('click', reintentar, false);
+				    } else {
+				        bton.attachEvent('onclick', registrar);
+				    }								
+					  
+                }else{
+                   eliminarElemento("btn_ing");
+                   eliminarElemento("btn_reg");
+                   eliminarElemento("inputUsuario");
+                   document.getElementById("title").innerText = "Bienvenido  "+usr;
+                }
+              
+		}
+		function reintentar(){
+			eliminarElemento("reintentar");
+			eliminarElemento("btn_ing");
+            eliminarElemento("btn_reg");
+            eliminarElemento("inputUsuario");
+			document.getElementById("inicio").innerText ="INGRESAR";
+			document.getElementById("title").innerText ="";
+
+			var input_=document.createElement("input");
+			input_.id="inputUsuario";
+			input_.type="text";
+			input_.placeholder="Usuario";
+			//Boton para ingresar
+			var btn_ing_=document.createElement("button");
+			btn_ing_.innerText="Ingresar";
+			btn_ing_.id="btn_ing";
+			
+			//Boton para registrar
+			var btn_reg_=document.createElement("button");
+			btn_reg_.innerText="Registrar";
+			btn_reg_.id="btn_reg";
+			
+			document.getElementById("formulario").appendChild(input_);
+			//document.getElementById("formulario").appendChild(espacio);			
+			document.getElementById("formulario").appendChild(btn_ing_);
+			//document.getElementById("formulario").appendChild(espacio);			
+			document.getElementById("formulario").appendChild(btn_reg_);
+			//document.getElementById("formulario").appendChild(espacio);
+			
+			if (btn_ing_.addEventListener && btn_reg_.addEventListener){			    
+				
+				btn_ing_.addEventListener('click', login, false);
+				btn_reg_.addEventListener('click', registrar, false);
+			} else {
+			    btn_ing_.attachEvent('onclick', login);
+			    btn_reg_.attachEvent('onclick', registrar);
+
+			}
+
+
+
+
+		}
+		function eliminarElemento(elem){
+			elem_ = document.getElementById(elem);	
+			if (elem_){
+				padre = elem_.parentNode;
+				padre.removeChild(elem_);
+			} 
+		}
+		function registrar(){
+			
+			document.getElementById("inicio").innerText ="Registrando";
+            eliminarElemento("btn_ing");
+            eliminarElemento("btn_reg");
+            eliminarElemento("inputUsuario");
+			//var nvo= document.getElementById("nvo_usr").value;
+			var input_=document.createElement("input");
+			input_.id="inputUsuario";
+			input_.type="text";
+			input_.placeholder="Usuario";
+			//Boton para registrar
+			var btn_reg_=document.createElement("button");
+			btn_reg_.innerText="Aceptar";
+			btn_reg_.id="btn_reg";
+			
+			document.getElementById("formulario").appendChild(input_);			
+			document.getElementById("formulario").appendChild(btn_reg_);
+			//document.getElementById("formulario").appendChild(espacio);
+			
+			if (btn_reg_.addEventListener){			    
+				btn_reg_.addEventListener('click', guardar, false);
+			} else {
+			    btn_reg_.attachEvent('onclick', guardar);
+
+			}
+
+
+
+		}
+
+		function guardar(){
+			var usr = document.getElementById("inputUsuario").value;			
+            if(localStorage.getItem(usr) === null){
+               		//elminar elemento
+                   localStorage.setItem(usr, null);
+                   alert("Usurio registrado");
+                   document.getElementById("title").innerText = "Usuario registrado";
+                   //Crear boton de aceptar reintentar
+                   reintentar();
+
+                }else{
+                	alert("Usurio ya existe");
+                   document.getElementById("title").innerText = "Usuario existe "+usr;
+                   reintentar();
+                   //boton de aceptar reintentar
+                }
+
+		}
+		function limpiarVar(){
+			localStorage.clear();
+		}
+		function sirve(){
+			alert("Sirvo");
+		}
+
+
+
     	</script>
+
 	</header>
 
 	<nav>
@@ -81,14 +224,22 @@
 			<li><a href="#">Nueva PlayList</a> </li>
 			<li><a href="#">About</a> </li>
 		</ul>
-		<div id="login">
-			<form>
-				<h3 id="title">Registrarte</h3>
-				<label for="inputEmail"></label><br>
-				<input id="text" type="email"  placeholder="Usuario" name=""> <br>
-				<button type="button" onclick="login()">Entrar</button>
+		<div id="formulario">
+			<form id="login_form">
+				<h4 id="inicio">INGRESAR</h4>
+				<input id="inputUsuario" type="text" placeholder="Usuario" name=""><br>	
+				<p id="title"></p>	
 			</form>
-		</div>
+			<div id="boton">
+			<button id="btn_ing" onclick="login()">Ingresar</button>
+			</div>
+			<div id="reg">
+			<button id="btn_reg" onclick="registrar()">Registrar</button>
+			</div>
+			
+			<!--<button id="btn" onclick="limpiarVar()">Limpiar</button>-->
+	
+	</div>
 	</nav>
 </div>
 <br>
