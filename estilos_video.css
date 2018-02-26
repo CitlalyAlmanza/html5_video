@@ -123,4 +123,9 @@
 	    margin:10px;    
 	}
 
-	
+	#login{
+		margin-left: 8em;
+		float: left;
+		height: 5em;
+		width: 9em;
+	}
