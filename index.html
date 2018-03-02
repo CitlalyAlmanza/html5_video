@@ -26,7 +26,7 @@
 
 			function sobre(ev){
 				ev.preventDefault();
-	            ev.dataTransfer.dropEffect = "link" //move copy
+	            ev.dataTransfer.dropEffect = "link"; //move copy
 	        }
 
 			function soltar(ev){
@@ -36,6 +36,16 @@
 			}
 			function soltar2(ev){
 				ev.preventDefault();
+				/*
+				if (ev.dataTransfer.items[0].kind === 'file') {
+					var fileName = ev.dataTransfer.items[0].getAsFile();
+					//console.log('... file[0].name = ' + file.name);
+					
+				}else{
+					var fileName = ev.dataTransfer.files[0].name;
+					console.log('... file[0].name = ' + ev.dataTransfer.files[0].name);
+				}
+				*/
 				var entry = ev.dataTransfer.items[0].webkitGetAsEntry();
 			    var videoName = entry.fullPath;
 			    var path = "C:/Users/Poncho/Desktop"+entry.fullPath;			    
@@ -45,9 +55,8 @@
 				videlem.src = path;
 				videlem.controls="true";
 				videlem.id="Newvideo";
-				videlem.title="Newvideo";
-				videlem.width="200";
-				videlem.height="200";
+				videlem.title=videoName;
+				videlem.muted="true";
 				videlem.autoplay="true";
 				videlem.width="450";
 				videlem.height="300";
@@ -56,11 +65,36 @@
 
 			function soltar3(ev){
 				ev.preventDefault();
+
+				/////////// NEW WAY ///////////
+				var files = ev.dataTransfer.files;
+				var f = files[0];
+            	var reader = new FileReader();
+				reader.onload = (function (theFile) {
+					return function (e) {
+						var li_elem = document.createElement("li");
+						var srcVideo = e.target.result;
+						var videoName = theFile.name;
+						li_elem.innerHTML = ['<video width="150" height="150" src="',srcVideo,
+							'" title="', escape(videoName), '"></video>','<p>',escape(videoName),'</p>'].join('');
+						/*
+						alert(srcVideo);
+						alert(videoName);
+						alert(escape(videoName));						
+						alert(li_elem.innerHTML);
+						*/
+						document.getElementById('playlist').insertBefore(li_elem, null);
+					};
+				})(f);
+				reader.readAsDataURL(f);
+
+				/////////// PREVIOUS WAY ///////////
+				/*
 			    var entry = ev.dataTransfer.items[0].webkitGetAsEntry();
-			    var videoName = entry.fullPath;
+				var videoName = entry.fullPath;
 			    var path = "C:/Users/Poncho/Desktop"+entry.fullPath;			    
-			    //alert(path);
-			    //if (entry.isDirectory){}
+			    alert(path);
+			    if (entry.isDirectory){}
 				var li_elem = document.createElement("li");
 				var videlem = document.createElement("video");
 				videlem.src = path;
@@ -69,12 +103,12 @@
 				videlem.width="150";
 				videlem.height="150";	
 				li_elem.appendChild(videlem);
+				li_elem.innerHTML)()
 				document.getElementById("playlist").appendChild(li_elem);
-				
-
+				*/
 			}
 			//*******************************************************************************
-				//********************FUNCIONES PARA LOGIN ***********************************
+			//********************FUNCIONES PARA LOGIN ***********************************
 			function login(){
 			var usr = document.getElementById("inputUsuario").value;			
                if(localStorage.getItem(usr) === null){
@@ -252,7 +286,7 @@
 			<ul id="playlist" ondrop="soltar3(event);" ondragover="sobre(event);">
 			    <li>
 					<video id="upload" title="Timelapse Paris" src="videos/paris.webm" poster="https://www.rumbo.es/hoteles/img/francia/paris.jpg" 
-					muted width="150" height="150"></video> Timelapse Paris
+					muted width="150" height="150"></video> <p>Timelapse Paris</p>
 				</li>
 				<li>
 					<video title="Timelapse Mexico" src="videos/mexico.webm" poster="http://www.banderasnews.com/1605/images/cdmx.jpg" 
