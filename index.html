@@ -36,6 +36,37 @@
 			}
 			function soltar2(ev){
 				ev.preventDefault();
+
+				/////// NEW WAY //////
+				var files = ev.dataTransfer.files;
+				var f = files[0];
+            	var reader = new FileReader();
+				reader.onload = (function (theFile) {
+					return function (e) {
+						var li_elem = document.createElement("li");
+						var srcVideo = e.target.result;
+						var videoName = theFile.name;
+						var videlem = document.createElement("video");
+						videlem.src = srcVideo;
+						videlem.controls="true";
+						videlem.id="Newvideo";
+						videlem.title=videoName;
+						videlem.muted="true";
+						videlem.autoplay="true";
+						videlem.width="450";
+						videlem.height="300";
+						/*
+						alert(srcVideo);
+						alert(videoName);
+						alert(escape(videoName));						
+						alert(li_elem.innerHTML);
+						*/
+						document.getElementById('droparea').insertBefore(videlem, null);
+					};
+				})(f);
+				reader.readAsDataURL(f);
+
+				//// GET VIDEO NAME: [PROFE]
 				/*
 				if (ev.dataTransfer.items[0].kind === 'file') {
 					var fileName = ev.dataTransfer.items[0].getAsFile();
@@ -46,6 +77,9 @@
 					console.log('... file[0].name = ' + ev.dataTransfer.files[0].name);
 				}
 				*/
+				
+				/////// PREVIOUS WAY ////////
+				/*
 				var entry = ev.dataTransfer.items[0].webkitGetAsEntry();
 			    var videoName = entry.fullPath;
 			    var path = "C:/Users/Poncho/Desktop"+entry.fullPath;			    
@@ -61,6 +95,7 @@
 				videlem.width="450";
 				videlem.height="300";
 				document.getElementById("droparea").appendChild(videlem);
+				*/
 			}
 
 			function soltar3(ev){
