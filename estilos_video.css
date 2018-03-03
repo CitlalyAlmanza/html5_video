@@ -1,9 +1,9 @@
-	* {
+	/* * {
 		padding: 0px;
 		margin:0px;
 		background-color: white;
 		font-family: Arial, Helvetica, sans-serif;
-	}
+	}*/
 	#Contenedor{
 		width: 80%;
 		height: 43.5em;
@@ -19,7 +19,7 @@
 		color: white;
 		width: 50%;
 	}
-
+/*
 	header{
 		float: left;
 		margin: auto;
@@ -27,14 +27,15 @@
 		height: 7em;
 		font-family: Arial, Helvetica, sans-serif;
 		background-color: #405;
-			/*Verdana, Geneva, Arial, Helvetica, sans-serif*/
-	}
+			
+	}*/
 	img{
 		float: left;
 		margin-right: 8%;
 		background-color: #405;
 	}
 	/******************MENU**********/
+	/*
 	nav{
 		clear: right;
 		margin: auto;			
@@ -43,10 +44,10 @@
 		height: 7em;
 		
 		
-	}
+	}*/
 	ul,ol{
 		list-style: none;
-	}
+	}/*
 	nav li a {
 		background-color: #000;
 		color: #ffff;
@@ -58,10 +59,11 @@
 		
 	nav li a:hover{
 		background-color:#434343; 
-	}
+	}*/
+	
 	ul li{
 		float:left;
-	}
+	}/*
 	nav li ul{
 		display: none;
 		position: absolute;
@@ -73,7 +75,7 @@
 	nav li ul li {
 		position : relative;
 	}
-	/******************/
+	*****************/
 	main{
 		clear:left;
 		background-color: white;
@@ -82,7 +84,7 @@
 		margin:auto;
 	}
 	article{		
-		width: 55%;
+		width: 70%;
 		background-color: white;
 		float: left;
 		height: 26em;
@@ -90,7 +92,7 @@
 	}
 	aside{
 		float: right;
-		width: 40%;
+		width: 30%;
 		background-color: white;
 		height: 26em;
 		overflow:scroll;
@@ -101,7 +103,7 @@
 		clear: left;
 		width: 80%;
 		height: 4em;
-		background-color: #405;
+		background-color: #181818;
 		margin: auto;
 	}
 
