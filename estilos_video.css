@@ -128,12 +128,12 @@
 
 	#formulario{
 		margin-left: 2em;
-		float: left;
-		
-		width: 9em;
-		background-color: #405;
+		float: left;		
+		width: 12.3em;
+		background-color: #282828;
 	}
-	#login_form, #inicio, #title, #boton, #reg{
-		background-color: #405;
-		color: white;
+	#login_form,#btn, #title, #boton, #reg{
+		background-color: #282828;
+		color: #c6538c;
 	}
+	
